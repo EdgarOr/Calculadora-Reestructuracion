@@ -13,6 +13,8 @@ public class CalculadoraReestructuracion {
         VentanaPortada f = new VentanaPortada();
 //        VentanaReestructuracion f = new VentanaReestructuracion();
         
+        
+        
     }
     
 }
