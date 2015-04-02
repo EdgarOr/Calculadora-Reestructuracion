@@ -1,7 +1,6 @@
 package calculadorareestructuracion;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -113,7 +112,7 @@ public class Reestructuracion {
             auxiliar1 = calculoComun(interesVeoPrevioBD, dia);
             auxiliar1 *= docto;
             veo += auxiliar1;
-            System.out.println(auxiliar1 + "@VEN1");
+//            System.out.println(auxiliar1 + "@VEN1");
             
         }
         
@@ -128,19 +127,30 @@ public class Reestructuracion {
             auxiliar1 = calculoComun(interesVeoPosteriorBD, dia);
             docto /= auxiliar1;
             veo += docto;
-            System.out.println(docto+ "@VEN2");
+//            System.out.println(docto+ "@VEN2");
             
         }
         
     }
     
     public void ven(){
-        double auxiliar1;
-        double dia, total;
+        double dia, total, interesBD,exponente,potencia;
         for (String diaPago : diasPagos) {
             dia = Double.parseDouble(diaPago);
-            auxiliar1 = calculoComun(interesVenBD, dia);
-            total = 1 / auxiliar1;
+            interesBD = interesVenBD;
+            
+            interesBD /= diasAnioBD;
+            interesBD *= diasCapitalizacionBD;
+            interesBD ++;
+            DecimalFormat formato = new DecimalFormat("#.########");
+            String auxiliar = formato.format(interesBD);
+            auxiliar = auxiliar.replace((auxiliar.charAt(auxiliar.length() - 1) +""), "");
+            interesBD = Double.parseDouble(auxiliar);
+            exponente = dia / diasCapitalizacionBD;
+            potencia = Math.pow(interesBD, exponente);
+            total = 1 / potencia;
+            total = Math.rint(total * 10000000) / 10000000;
+            System.out.println(total);
             ven += total;
             
         }
@@ -166,7 +176,7 @@ public class Reestructuracion {
         veo();
         
         veo = Math.rint(veo * 100)/100;
-        ven = Math.rint(ven * 10000000)/10000000 + 0.0000411;
+        ven = Math.rint(ven * 10000000)/10000000;
         double pagoTotal = Math.rint(veo/ven*100)/100;
         double pagoReal = Math.rint(pagoTotal * diasPagos.length * 100)/100;
         
