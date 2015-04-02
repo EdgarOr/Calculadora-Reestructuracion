@@ -5,10 +5,7 @@
  */
 package calculadorareestructuracion;
 
-import javax.swing.JComboBox;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+
 
 /**
  *
@@ -59,16 +56,16 @@ public class PanelReestructuracion extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         tipoInteresJCB = new javax.swing.JComboBox();
 
-        jLabel1.setText("Doctos vencidos previos FF");
+        jLabel1.setText("Doctos vencidos ");
 
         jLabel2.setText("Tasa de interés para VEO (%)");
 
-        jLabel3.setText("Días vencido previos FF");
+        jLabel3.setText("Días vencidos");
 
         jLabel4.setText("Docto de fecha focal (FF)");
 
         doctosPreviosJTextF.setColumns(30);
-        doctosPreviosJTextF.setText("6,000.00/3,000.00");
+        doctosPreviosJTextF.setText("6,000.00 / 3,000.00");
         doctosPreviosJTextF.setToolTipText("Separe los doctos mediante: diagonales (/)");
         doctosPreviosJTextF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,10 +75,10 @@ public class PanelReestructuracion extends javax.swing.JPanel {
 
         interesVeoPrevioJTextF.setColumns(10);
         interesVeoPrevioJTextF.setText("9");
-        interesVeoPrevioJTextF.setToolTipText("Interés previo fecha focal");
+        interesVeoPrevioJTextF.setToolTipText("Interés vencido");
 
         diasVencidosJTextF.setColumns(20);
-        diasVencidosJTextF.setText("50,15");
+        diasVencidosJTextF.setText("50, 15");
         diasVencidosJTextF.setToolTipText("Separe cada día mediante: comas (,)");
         diasVencidosJTextF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,16 +99,16 @@ public class PanelReestructuracion extends javax.swing.JPanel {
         diasCapitalizacionJTextF.setColumns(10);
         diasCapitalizacionJTextF.setText("12");
 
-        jLabel7.setText("Doctos vencidos posteriores FF");
+        jLabel7.setText("Doctos por vencer");
 
         doctosPosterioresJTextF.setColumns(30);
-        doctosPosterioresJTextF.setText("200.00/3,250.00");
+        doctosPosterioresJTextF.setText("200 / 3,250.00");
         doctosPosterioresJTextF.setToolTipText("Separe los doctos mediante: diagonales (/)");
 
         jLabel8.setText("Fechas de pago (en días)");
 
         diasPagosJTextF.setColumns(30);
-        diasPagosJTextF.setText("30,60,100,120,150,200");
+        diasPagosJTextF.setText("30, 60, 100, 120, 150, 200");
         diasPagosJTextF.setToolTipText("Separe cada día mediante: comas (,)");
         diasPagosJTextF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,10 +116,10 @@ public class PanelReestructuracion extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setText("Días posteriores FF");
+        jLabel9.setText("Días por vencer");
 
         diasPosterioresJTextF.setColumns(20);
-        diasPosterioresJTextF.setText("45,110");
+        diasPosterioresJTextF.setText("45, 110");
         diasPosterioresJTextF.setToolTipText("Separe cada día mediante: comas (,)");
 
         bCalcular.setText("Calcular");
@@ -141,7 +138,7 @@ public class PanelReestructuracion extends javax.swing.JPanel {
 
         interesVeoPosteriorJTextF.setColumns(10);
         interesVeoPosteriorJTextF.setText("5");
-        interesVeoPosteriorJTextF.setToolTipText("Interés posterior fecha focal");
+        interesVeoPosteriorJTextF.setToolTipText("Interés por vencer");
 
         desplegarResultadosJTA.setEditable(false);
         desplegarResultadosJTA.setColumns(20);

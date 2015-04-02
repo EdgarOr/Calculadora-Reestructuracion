@@ -32,7 +32,11 @@ public class Reestructuracion {
     
     public Reestructuracion(PanelReestructuracion panel){
         this.panel = panel;
+        try{
         asignarValores();
+        }catch(Exception e){
+            despliegueResultados = "Revise los datos que esta intruduciendo, hay un error.";
+        }
         
     }
     
@@ -114,7 +118,6 @@ public class Reestructuracion {
             auxiliar1 = redondeo(auxiliar1);
             veo += auxiliar1;
             veo = redondeo(veo);
-//            System.out.println(auxiliar1 + "@VEN1");
             
         }
         
@@ -124,7 +127,6 @@ public class Reestructuracion {
         i = 0;
         for (String doctoPosterior : doctosPosteriores) {
             dia = Integer.parseInt(diasPosteriores[i]);
-//            System.out.println(dia);
             i++;
             docto =Float.parseFloat(doctoPosterior);
             auxiliar1 = calculoComun(interesVeoPosteriorBD, dia);
@@ -132,7 +134,6 @@ public class Reestructuracion {
             docto = redondeo(docto);
             veo += docto;
             veo = redondeo(veo);
-//            System.out.println(docto+ "@VEN2");
             
         }
         
@@ -146,13 +147,11 @@ public class Reestructuracion {
             potencia = calculoComun(interesVenBD, dia);
             total = 1 / potencia;
             total = redondeo(total);
-            System.out.println(total);
             ven += total;
             ven = redondeo(ven);
             
         }
                 
-//        System.out.println(ven);
     }
     
     private double redondeo(double numero){
@@ -206,9 +205,7 @@ public class Reestructuracion {
                                 "Valor de Esquema Nuevo (VEN): " + ven + "\n" +
                                 diasPagos.length + " pagos de $"  + pagoTotal  + "\n"
                                 + "Realmente pagará $" + pagoReal;
-    
-        System.out.println(despliegueResultados);
-        
+       
     }
 
     public String getDespliegueResultados() {

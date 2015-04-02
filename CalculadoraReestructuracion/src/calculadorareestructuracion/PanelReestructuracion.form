@@ -196,7 +196,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Doctos vencidos previos FF"/>
+            <Property name="text" type="java.lang.String" value="Doctos vencidos "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -206,7 +206,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="D&#xed;as vencido previos FF"/>
+            <Property name="text" type="java.lang.String" value="D&#xed;as vencidos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -217,7 +217,7 @@
         <Component class="javax.swing.JTextField" name="doctosPreviosJTextF">
           <Properties>
             <Property name="columns" type="int" value="30"/>
-            <Property name="text" type="java.lang.String" value="6,000.00/3,000.00"/>
+            <Property name="text" type="java.lang.String" value="6,000.00 / 3,000.00"/>
             <Property name="toolTipText" type="java.lang.String" value="Separe los doctos mediante: diagonales (/)"/>
           </Properties>
           <Events>
@@ -228,13 +228,13 @@
           <Properties>
             <Property name="columns" type="int" value="10"/>
             <Property name="text" type="java.lang.String" value="9"/>
-            <Property name="toolTipText" type="java.lang.String" value="Inter&#xe9;s previo fecha focal"/>
+            <Property name="toolTipText" type="java.lang.String" value="Inter&#xe9;s vencido"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="diasVencidosJTextF">
           <Properties>
             <Property name="columns" type="int" value="20"/>
-            <Property name="text" type="java.lang.String" value="50,15"/>
+            <Property name="text" type="java.lang.String" value="50, 15"/>
             <Property name="toolTipText" type="java.lang.String" value="Separe cada d&#xed;a mediante: comas (,)"/>
           </Properties>
           <Events>
@@ -271,13 +271,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Doctos vencidos posteriores FF"/>
+            <Property name="text" type="java.lang.String" value="Doctos por vencer"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="doctosPosterioresJTextF">
           <Properties>
             <Property name="columns" type="int" value="30"/>
-            <Property name="text" type="java.lang.String" value="200.00/3,250.00"/>
+            <Property name="text" type="java.lang.String" value="200 / 3,250.00"/>
             <Property name="toolTipText" type="java.lang.String" value="Separe los doctos mediante: diagonales (/)"/>
           </Properties>
         </Component>
@@ -289,7 +289,7 @@
         <Component class="javax.swing.JTextField" name="diasPagosJTextF">
           <Properties>
             <Property name="columns" type="int" value="30"/>
-            <Property name="text" type="java.lang.String" value="30,60,100,120,150,200"/>
+            <Property name="text" type="java.lang.String" value="30, 60, 100, 120, 150, 200"/>
             <Property name="toolTipText" type="java.lang.String" value="Separe cada d&#xed;a mediante: comas (,)"/>
           </Properties>
           <Events>
@@ -298,13 +298,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="D&#xed;as posteriores FF"/>
+            <Property name="text" type="java.lang.String" value="D&#xed;as por vencer"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="diasPosterioresJTextF">
           <Properties>
             <Property name="columns" type="int" value="20"/>
-            <Property name="text" type="java.lang.String" value="45,110"/>
+            <Property name="text" type="java.lang.String" value="45, 110"/>
             <Property name="toolTipText" type="java.lang.String" value="Separe cada d&#xed;a mediante: comas (,)"/>
           </Properties>
         </Component>
@@ -328,7 +328,7 @@
           <Properties>
             <Property name="columns" type="int" value="10"/>
             <Property name="text" type="java.lang.String" value="5"/>
-            <Property name="toolTipText" type="java.lang.String" value="Inter&#xe9;s posterior fecha focal"/>
+            <Property name="toolTipText" type="java.lang.String" value="Inter&#xe9;s por vencer"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
