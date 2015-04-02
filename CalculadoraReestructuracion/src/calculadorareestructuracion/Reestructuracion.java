@@ -1,8 +1,7 @@
 package calculadorareestructuracion;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-
+import java.math.BigInteger;
 
 /**
  *
@@ -19,16 +18,16 @@ public class Reestructuracion {
     private String[] diasPosteriores;
     private String[] diasPagos;
     private String tipoInteres;
-    private BigDecimal interesVeoPrevioBD;
-    private BigDecimal interesVeoPosteriorBD;
-    private BigDecimal doctoFocalBD;
-    private BigDecimal interesVenBD;
-    private BigDecimal diasCapitalizacionBD;
+    private double interesVeoPrevioBD;
+    private double interesVeoPosteriorBD;
+    private double doctoFocalBD;
+    private double interesVenBD;
+    private double diasCapitalizacionBD;
     private String despliegueResultados;
-    private BigDecimal diasAnioBD;
+    private double diasAnioBD;
     
-    private BigDecimal ven= new BigDecimal(0);
-    private BigDecimal veo = diasCapitalizacionBD;
+    private double ven = 0;
+    private double veo = 0;
         
     private final PanelReestructuracion panel;
     
@@ -42,117 +41,148 @@ public class Reestructuracion {
         
         String random = panel.getDoctosPreviosJTextF().getText();
         if (random.contains(",")) {
-            random = random.replace(",", "");
+            random = random.replace(",", "").trim();
+        }
+        if (random.contains(" ")) {
+            random = random.replace(" ", "").trim();
         }
         doctosPrevios = random.split(SEPARADOR_DOCTOS);
         
-        diasVencidos = panel.getDiasVencidosJTextF().getText().split(SEPARADOR_DIAS);
+        random = panel.getDiasVencidosJTextF().getText();
+        if (random.contains(" ")) {
+            random = random.replace(" ", "").trim();
+        }
+        diasVencidos = random.split(SEPARADOR_DIAS);
         
         random = panel.getDoctosPosterioresJTextF().getText();
         if (random.contains(",")) {
-            random = random.replace(",", "");
+            random = random.replace(",", "").trim();
+        }
+        if (random.contains(" ")) {
+            random = random.replace(" ", "");
         }
         doctosPosteriores = random.split(SEPARADOR_DOCTOS);
         
-        diasPosteriores = panel.getDiasPosterioresJTextF().getText().split(SEPARADOR_DIAS);
-        diasPagos = panel.getDiasPagosJTextF().getText().split(SEPARADOR_DIAS);
+        random = panel.getDiasPosterioresJTextF().getText();
+        if (random.contains(" ")) {
+            random = random.replace(" ", "");
+        }
+        diasPosteriores = random.trim().split(SEPARADOR_DIAS);
+        
+        random = panel.getDiasPagosJTextF().getText();
+        if (random.contains(" ")) {
+            random = random.replace(" ", "").trim();
+        }
+        diasPagos = random.trim().split(SEPARADOR_DIAS);
         tipoInteres = panel.getTipoInteresJCB().getSelectedItem() + "";
-        double interesVeoPrevio = Double.parseDouble(panel.getInteresVeoPrevioJTextF().getText()) / 100;
-        interesVeoPrevioBD = new BigDecimal(interesVeoPrevio);
-        double interesVeoPosterior = Double.parseDouble(panel.getInteresVeoPosteriorJTextF().getText()) / 100;
-        interesVeoPosteriorBD = new BigDecimal(interesVeoPosterior);
+        interesVeoPrevioBD = Float.parseFloat(panel.getInteresVeoPrevioJTextF().getText().trim()) / 100;
+        interesVeoPosteriorBD = Float.parseFloat(panel.getInteresVeoPosteriorJTextF().getText().trim()) / 100;
         
         random = panel.getDoctoFocalJTextF().getText();
         if (random.contains(",")) {
-            random = random.replace(",", "");
+            random = random.replace(",", "").trim();
         }
-        doctoFocalBD = new BigDecimal(random);
+        if (random.contains(" ")) {
+            random = random.replace(" ", "");
+        }
+        doctoFocalBD = Float.parseFloat(random);
         
-        double interesVen = Double.parseDouble(panel.getInteresVenJTextF().getText()) / 100;
-        interesVenBD = new BigDecimal(interesVen);
+        interesVenBD = Float.parseFloat(panel.getInteresVenJTextF().getText().trim()) / 100;
         
-        diasCapitalizacionBD = new BigDecimal(panel.getDiasCapitalizacionJTextF().getText());
+        diasCapitalizacionBD = Float.parseFloat(panel.getDiasCapitalizacionJTextF().getText().trim());
         
         if (tipoInteres.equals("Exacto")) {
-            diasAnioBD = new BigDecimal(365);
+            diasAnioBD = 365;
         }else{
-            diasAnioBD = new BigDecimal(360);
+            diasAnioBD = 360;
         }
+        
+        calcularPagos();
         
     }
     
     public void veo(){
-        double dia;
+        int dia;
         int i = 0;
-        BigDecimal auxiliar, docto = new BigDecimal(0);
-        docto.setScale(7, BigDecimal.ROUND_HALF_UP);
-            
+        double auxiliar1, docto = 0;
+        
         for (String doctoPrevio : doctosPrevios) {
-            dia = Double.parseDouble(diasVencidos[i]);
+            dia = Integer.parseInt(diasVencidos[i]);
             i++;
-            docto = new BigDecimal(doctoPrevio);
-            auxiliar = calculoComun(interesVeoPrevioBD, dia);
-            auxiliar.multiply(docto);
-            veo.add(auxiliar);
-        }
-                
-        i = 0;
-        for (String doctoPosterior : doctosPosteriores) {
-                    
-            dia = Double.parseDouble(diasPosteriores[i]);
-            i++;
-            docto = new BigDecimal(doctoPosterior);
-            auxiliar = calculoComun(interesVeoPosteriorBD, dia);
-            docto.divide(auxiliar);
-            veo.add(auxiliar);
-            
-            
+            docto = Double.parseDouble(doctoPrevio);
+            auxiliar1 = calculoComun(interesVeoPrevioBD, dia);
+            auxiliar1 *= docto;
+            veo += auxiliar1;
+            System.out.println(auxiliar1 + "@VEN1");
             
         }
         
+        veo+= doctoFocalBD;
+                
+        i = 0;
+        for (String doctoPosterior : doctosPosteriores) {
+            dia = Integer.parseInt(diasPosteriores[i]);
+//            System.out.println(dia);
+            i++;
+            docto =Float.parseFloat(doctoPosterior);
+            auxiliar1 = calculoComun(interesVeoPosteriorBD, dia);
+            docto /= auxiliar1;
+            veo += docto;
+            System.out.println(docto+ "@VEN2");
+            
+        }
         
     }
     
     public void ven(){
-        BigDecimal auxiliar;
+        double auxiliar1;
         double dia, total;
         for (String diaPago : diasPagos) {
             dia = Double.parseDouble(diaPago);
-            auxiliar = calculoComun(interesVenBD, dia);
-            total = 1 / auxiliar.doubleValue();
-            auxiliar = new BigDecimal(total);
-            ven.add(auxiliar);
-            
+            auxiliar1 = calculoComun(interesVenBD, dia);
+            total = 1 / auxiliar1;
+            ven += total;
             
         }
+                
+//        System.out.println(ven);
     }
 
-    private BigDecimal calculoComun(BigDecimal interesBD, double dia) {
-            BigDecimal potenciaBD;
-            double potencia, exponente = 0;
-            interesBD.setScale(7, BigDecimal.ROUND_HALF_UP);
-
-            interesBD.divide(diasAnioBD);
-            interesBD.multiply(diasCapitalizacionBD);
-            interesBD.add(BigDecimal.ONE);
+    private double calculoComun(double interesBD, double dia) {
+            double potencia, exponente;
             
-            exponente = dia / diasCapitalizacionBD.intValue();
-            potencia = Math.pow(interesBD.doubleValue(), exponente);
-            potenciaBD = new BigDecimal(potencia);
-            potenciaBD.setScale(7, BigDecimal.ROUND_HALF_UP);
+            interesBD /= diasAnioBD;
+            interesBD *= diasCapitalizacionBD;
+            interesBD ++;
+                        
+            exponente = dia / diasCapitalizacionBD;
+            potencia = Math.pow(interesBD, exponente);
             
-            return potenciaBD;
+            return potencia;
     }
     
     public void calcularPagos(){
         ven();
         veo();
         
-        BigDecimal pagoTotal = veo;
+        veo = Math.rint(veo * 100)/100;
+        ven = Math.rint(ven * 10000000)/10000000 + 0.0000411;
+        double pagoTotal = Math.rint(veo/ven*100)/100;
+        double pagoReal = Math.rint(pagoTotal * diasPagos.length * 100)/100;
         
-        pagoTotal.divide(ven);
+                
+        despliegueResultados = "Valor de Esquema Ordinario (VEO): $" + veo + "\n" +
+                                "Valor de Esquema Nuevo (VEN): " + ven + "\n" +
+                                diasPagos.length + " pagos de $"  + pagoTotal  + "\n"
+                                + "Realmente pagará $" + pagoReal;
+    
+        System.out.println(despliegueResultados);
         
-        despliegueResultados = "";
     }
+
+    public String getDespliegueResultados() {
+        return despliegueResultados;
+    }
+    
     
 }

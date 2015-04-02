@@ -18,10 +18,10 @@ public class VentanaReestructuracion extends JFrame implements ActionListener {
     private JMenuItem salirMI;
     
     public VentanaReestructuracion(){
-        this.setSize(560, 580);
+        this.setSize(560, 620);
         addElementos();
         this.setResizable(false);
-        this.setLocation(400, 150);
+        this.setLocation(400, 100);
         this.setDefaultCloseOperation(3);
         this.setVisible(true);
         

@@ -68,6 +68,7 @@ public class PanelReestructuracion extends javax.swing.JPanel {
         jLabel4.setText("Docto de fecha focal (FF)");
 
         doctosPreviosJTextF.setColumns(30);
+        doctosPreviosJTextF.setText("6,000.00/3,000.00");
         doctosPreviosJTextF.setToolTipText("Separe los doctos mediante: diagonales (/)");
         doctosPreviosJTextF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,9 +77,11 @@ public class PanelReestructuracion extends javax.swing.JPanel {
         });
 
         interesVeoPrevioJTextF.setColumns(10);
+        interesVeoPrevioJTextF.setText("9");
         interesVeoPrevioJTextF.setToolTipText("Interés previo fecha focal");
 
         diasVencidosJTextF.setColumns(20);
+        diasVencidosJTextF.setText("50,15");
         diasVencidosJTextF.setToolTipText("Separe cada día mediante: comas (,)");
         diasVencidosJTextF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,23 +90,28 @@ public class PanelReestructuracion extends javax.swing.JPanel {
         });
 
         doctoFocalJTextF.setColumns(30);
+        doctoFocalJTextF.setText("4,500.00");
 
         jLabel5.setText("Tasa de interés para VEN (%)");
 
         interesVenJTextF.setColumns(10);
+        interesVenJTextF.setText("8");
 
         jLabel6.setText("Días de capitalización");
 
         diasCapitalizacionJTextF.setColumns(10);
+        diasCapitalizacionJTextF.setText("12");
 
         jLabel7.setText("Doctos vencidos posteriores FF");
 
         doctosPosterioresJTextF.setColumns(30);
+        doctosPosterioresJTextF.setText("200.00/3,250.00");
         doctosPosterioresJTextF.setToolTipText("Separe los doctos mediante: diagonales (/)");
 
         jLabel8.setText("Fechas de pago (en días)");
 
         diasPagosJTextF.setColumns(30);
+        diasPagosJTextF.setText("30,60,100,120,150,200");
         diasPagosJTextF.setToolTipText("Separe cada día mediante: comas (,)");
         diasPagosJTextF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +122,7 @@ public class PanelReestructuracion extends javax.swing.JPanel {
         jLabel9.setText("Días posteriores FF");
 
         diasPosterioresJTextF.setColumns(20);
+        diasPosterioresJTextF.setText("45,110");
         diasPosterioresJTextF.setToolTipText("Separe cada día mediante: comas (,)");
 
         bCalcular.setText("Calcular");
@@ -131,6 +140,7 @@ public class PanelReestructuracion extends javax.swing.JPanel {
         });
 
         interesVeoPosteriorJTextF.setColumns(10);
+        interesVeoPosteriorJTextF.setText("5");
         interesVeoPosteriorJTextF.setToolTipText("Interés posterior fecha focal");
 
         desplegarResultadosJTA.setEditable(false);
@@ -142,7 +152,7 @@ public class PanelReestructuracion extends javax.swing.JPanel {
 
         jLabel10.setText("Tipo de interés");
 
-        tipoInteresJCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Exacto", "Ordinario" }));
+        tipoInteresJCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ordinario", "Exacto" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -254,13 +264,13 @@ public class PanelReestructuracion extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(diasPagosJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(tipoInteresJCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bCalcular)
                     .addComponent(bSalir))
@@ -299,6 +309,8 @@ public class PanelReestructuracion extends javax.swing.JPanel {
 
     private void bCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCalcularActionPerformed
         Reestructuracion re = new Reestructuracion(this);
+        desplegarResultadosJTA.setText(re.getDespliegueResultados());
+        
     }//GEN-LAST:event_bCalcularActionPerformed
 
    
