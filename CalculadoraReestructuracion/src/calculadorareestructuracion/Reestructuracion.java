@@ -111,12 +111,15 @@ public class Reestructuracion {
             docto = Double.parseDouble(doctoPrevio);
             auxiliar1 = calculoComun(interesVeoPrevioBD, dia);
             auxiliar1 *= docto;
+            auxiliar1 = redondeo(auxiliar1);
             veo += auxiliar1;
+            veo = redondeo(veo);
 //            System.out.println(auxiliar1 + "@VEN1");
             
         }
         
         veo+= doctoFocalBD;
+        veo = redondeo(veo);
                 
         i = 0;
         for (String doctoPosterior : doctosPosteriores) {
@@ -126,7 +129,9 @@ public class Reestructuracion {
             docto =Float.parseFloat(doctoPosterior);
             auxiliar1 = calculoComun(interesVeoPosteriorBD, dia);
             docto /= auxiliar1;
+            docto = redondeo(docto);
             veo += docto;
+            veo = redondeo(veo);
 //            System.out.println(docto+ "@VEN2");
             
         }
@@ -134,28 +139,38 @@ public class Reestructuracion {
     }
     
     public void ven(){
-        double dia, total, interesBD,exponente,potencia;
+        double dia, total, potencia;
         for (String diaPago : diasPagos) {
             dia = Double.parseDouble(diaPago);
-            interesBD = interesVenBD;
             
-            interesBD /= diasAnioBD;
-            interesBD *= diasCapitalizacionBD;
-            interesBD ++;
-            DecimalFormat formato = new DecimalFormat("#.########");
-            String auxiliar = formato.format(interesBD);
-            auxiliar = auxiliar.replace((auxiliar.charAt(auxiliar.length() - 1) +""), "");
-            interesBD = Double.parseDouble(auxiliar);
-            exponente = dia / diasCapitalizacionBD;
-            potencia = Math.pow(interesBD, exponente);
+            potencia = calculoComun(interesVenBD, dia);
             total = 1 / potencia;
-            total = Math.rint(total * 10000000) / 10000000;
+            total = redondeo(total);
             System.out.println(total);
             ven += total;
+            ven = redondeo(ven);
             
         }
                 
 //        System.out.println(ven);
+    }
+    
+    private double redondeo(double numero){
+        DecimalFormat formato = new DecimalFormat("#.########");
+        String auxiliar = formato.format(numero);
+        int cont = 1;
+        for (int i = auxiliar.length(); i == 0 ; i--) {
+            if (cont == 9 && auxiliar.charAt(i) == '.') {
+                auxiliar = auxiliar.replace((auxiliar.charAt(auxiliar.length()-1) +""), "");
+                numero = Double.parseDouble(auxiliar);
+            }
+            if (cont > 9) {
+                break;
+            }
+            cont++;
+        }
+        
+        return numero;
     }
 
     private double calculoComun(double interesBD, double dia) {
@@ -164,9 +179,14 @@ public class Reestructuracion {
             interesBD /= diasAnioBD;
             interesBD *= diasCapitalizacionBD;
             interesBD ++;
+            interesBD = redondeo(interesBD);
                         
             exponente = dia / diasCapitalizacionBD;
+            
+            exponente = redondeo(exponente);
+            
             potencia = Math.pow(interesBD, exponente);
+            potencia = redondeo(potencia);
             
             return potencia;
     }
@@ -178,6 +198,7 @@ public class Reestructuracion {
         veo = Math.rint(veo * 100)/100;
         ven = Math.rint(ven * 10000000)/10000000;
         double pagoTotal = Math.rint(veo/ven*100)/100;
+        pagoTotal = redondeo(pagoTotal);
         double pagoReal = Math.rint(pagoTotal * diasPagos.length * 100)/100;
         
                 
