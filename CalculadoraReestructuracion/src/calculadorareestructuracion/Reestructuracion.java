@@ -35,7 +35,7 @@ public class Reestructuracion {
         try{
         asignarValores();
         }catch(Exception e){
-            despliegueResultados = "Revise los datos que esta intruduciendo, hay un error.";
+            despliegueResultados = "Revise los datos que esta introduciendo, hay un error.";
         }
         
     }
